@@ -1,0 +1,267 @@
+/* ==========================================================================
+   HOJA DE ESTILO NOIR / SIN CITY — WEBSTORY SANTIAGO EN 100 PALABRAS
+   ========================================================================== */
+
+/* Reset básico para limpiar márgenes por defecto del navegador */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Cuerpo de la página con el gris claro continuo solicitado */
+body {
+    background-color: #DBDBDB; /* El color exacto de la corrección */
+    color: #111111; /* Texto casi negro para asegurar un contraste alto */
+    font-family: 'Lora', Georgia, serif; /* Tipografía clásica de crónica de prensa */
+    line-height: 1.7;
+    padding-top: 60px; /* Espacio para que el menú flotante no tape la portada */
+}
+
+/* Menú de navegación superior minimalista y oscuro */
+.menu {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: rgba(26, 26, 26, 0.95);
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    z-index: 1000;
+    border-bottom: 3px solid #E60000; /* Línea de acento rojo Sin City */
+}
+
+.menu a {
+    color: #DBDBDB;
+    text-decoration: none;
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+
+.menu a:hover {
+    color: #E60000; /* Cambia a rojo al pasar el cursor */
+}
+
+/* Sección de Portada (Hero) - Impacto Negro Inicial */
+.hero {
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 20px;
+    background-color: #111111; /* Contraste total: portada negra antes de pasar al fondo gris */
+    color: #DBDBDB;
+}
+
+.hero-contenido {
+    max-width: 850px;
+}
+
+.volanta {
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    color: #E60000; /* Rojo para destacar el tipo de reportaje */
+    letter-spacing: 2px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    font-size: 1rem;
+}
+
+h1 {
+    font-family: 'Oswald', Impact, sans-serif;
+    font-size: 4rem;
+    text-transform: uppercase;
+    line-height: 1.1;
+    margin-bottom: 25px;
+    letter-spacing: -1px;
+}
+
+.bajada {
+    font-size: 1.3rem;
+    margin-bottom: 35px;
+    color: #A0A0A0;
+    font-family: 'Lora', serif;
+    font-style: italic;
+}
+
+/* Efectos de Identidad Visual: Tachado y Énfasis */
+.tachado {
+    text-decoration: line-through;
+    text-decoration-color: #E60000; /* Raya roja sobre el "100 palabras" */
+    text-decoration-thickness: 6px;
+}
+
+.enfasis-rojo {
+    color: #E60000;
+}
+
+.boton {
+    display: inline-block;
+    padding: 14px 35px;
+    background-color: #E60000;
+    color: #FFFFFF;
+    text-decoration: none;
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: background 0.3s;
+}
+
+.boton:hover {
+    background-color: #B30000;
+}
+
+/* Secciones de la Crónica */
+section {
+    max-width: 680px; /* Ancho óptimo europeo para lectura periodística cómoda */
+    margin: 90px auto;
+    padding: 0 20px;
+}
+
+h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.2rem;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+    border-left: 6px solid #E60000; /* Bloque vertical rojo al lado del título */
+    padding-left: 15px;
+    line-height: 1.1;
+}
+
+p {
+    font-size: 1.15rem;
+    margin-bottom: 25px;
+    color: #1A1A1A;
+}
+
+/* Párrafo destacado de Hipótesis */
+.destacado {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #000000;
+    border-top: 3px solid #111111;
+    border-bottom: 3px solid #111111;
+    padding: 20px 0;
+    margin: 40px 0;
+    font-style: italic;
+}
+
+/* Tratamiento Automatizado de Imágenes (Efecto Cómic/Noir de Alto Contraste) */
+img.noir-effect {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 40px 0;
+    filter: grayscale(100%) contrast(190%) brightness(90%); /* Aplica el look Sin City por código */
+    border: 5px solid #111111; /* Marco negro grueso como viñeta de cómic */
+}
+
+/* Contenedor para los bloques de imágenes de pantalla completa */
+.separador-visual {
+    width: 100%;
+    background-color: #111111;
+    padding: 80px 0;
+    display: flex;
+    justify-content: center;
+    margin: 100px 0;
+}
+
+.separador-visual img {
+    max-width: 850px;
+    width: 100%;
+    padding: 0 20px;
+}
+
+/* Recuadros Oscuros para los Microcuentos Antológicos */
+.cuento-recuadro {
+    background-color: #1A1A1A;
+    color: #DBDBDB;
+    padding: 35px;
+    margin: 50px 0;
+    border-left: 6px solid #555555;
+}
+
+.cuento-recuadro.enfasis-borde-rojo {
+    border-left: 6px solid #E60000; /* Destaca el cuento crítico de Talagante */
+}
+
+.cuento-titulo {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    color: #E60000;
+    margin-bottom: 12px;
+}
+
+.cuento-texto {
+    font-style: italic;
+    font-size: 1.15rem;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+cite {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    display: block;
+    color: #888888;
+    letter-spacing: 1px;
+}
+
+/* Bloque Técnico de Metodología */
+.metodologia {
+    background-color: #1A1A1A;
+    color: #DBDBDB;
+    padding: 45px;
+    max-width: 750px;
+    margin: 120px auto 60px auto;
+    border: 3px solid #E60000;
+}
+
+.metodologia h2 {
+    border-left: 6px solid #DBDBDB;
+    color: #E60000;
+}
+
+.metodologia p {
+    color: #C0C0C0;
+}
+
+.metodologia ul {
+    margin-left: 25px;
+    margin-bottom: 25px;
+    color: #C0C0C0;
+}
+
+.metodologia li {
+    margin-bottom: 12px;
+    font-size: 1.05rem;
+}
+
+/* Footer Institucional */
+footer {
+    background-color: #000000;
+    color: #777777;
+    text-align: center;
+    padding: 50px 20px;
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    border-top: 4px solid #E60000;
+}
+
+footer p {
+    text-align: center;
+    margin-bottom: 6px;
+    color: #777777;
+    font-size: 0.85rem;
+}
