@@ -34,19 +34,115 @@
 
 <main id="cronica">
 
-    <!-- SECCIÓN 1: HIPÓTESIS Y CONCENTRACIÓN -->
-    <section class="intro">
-        <p class="volanta">El territorio de las palabras</p>
-        <h2>Un espejo roto de la Región Metropolitana</h2>
+<section class="presentacion-ediciones">
+    
+    <!-- Columna Izquierda: Textos alineados abajo -->
+    <div class="columna-texto-libro">
+        <h2>SANTIAGO EN <span class="tachado">100 PALABRAS</span></h2>
         
-        <p>
-            La Fundación Plagio ha realizado este concurso de manera casi ininterrumpida desde 2001, acumulando miles de relatos en su bitácora histórica. Sin embargo, concursar no asegura un puesto en el salón de honor. Al cruzar los datos institucionales del certamen con los índices socioeconómicos de la ciudad, la ilusión de equidad se desvanece.
+        <p>La Fundación Plagio ha realizado este concurso de manera casi ininterrumpida desde <span class="enfasis-rojo">2001</span>.</p>
+        
+        <p class="datos-clave">
+            <span class="enfasis-rojo">25 años | 21 ediciones.</span><br>
+            Dos conmemorativas y 19 anuales | 1.900 cuentos premiados.<br>
+            Los <span class="enfasis-rojo">100 mejores</span> de cada año | entre <span class="enfasis-rojo">miles</span> de enviados.
         </p>
+        
+        <p>En Chile hay 346 comunas. Si bien todas ellas pueden participar del concurso, <span class="enfasis-rojo">el 89% son de la Región Metropolitana</span>.</p>
+        
+        <p>Demás está decir que concursar no asegura un puesto en el salón de honor. Son cientos de miles los cuentos que año a año llegan. Es difícil identificar una tendencia respecto a cuantos llegan, no así respecto a <span class="enfasis-rojo">cuantos quedan</span>.</p>
+    </div>
 
-        <p class="destacado">
-            Nuestra hipótesis apunta a que el éxito en el certamen está intrínsecamente ligado a las condiciones materiales de las comunas de residencia. Santiago, Providencia, Ñuñoa y Las Condes concentran prácticamente el 40% de todos los cuentos seleccionados a lo largo de su historia.
-        </p>
-    </section>
+    <!-- Columna Derecha: Grilla de las 19 portadas -->
+    <div class="columna-grilla-portadas">
+        <!-- Tarjeta Edición 1 (Repetir esta estructura cambiando los datos para las 19) -->
+        <div class="tarjeta-edicion" data-pdf="pdfs/edicion_01.pdf">
+            <img src="visualizaciones/portada_01.png" alt="Edición 1">
+        </div>
+        
+        <div class="tarjeta-edicion" data-pdf="pdfs/edicion_02.pdf">
+            <img src="visualizaciones/portada_02.png" alt="Edición 2">
+        </div>
+
+        <div class="tarjeta-edicion" data-pdf="pdfs/edicion_03.pdf">
+            <img src="visualizaciones/portada_03.png" alt="Edición 3">
+        </div>
+
+        <div class="tarjeta-edicion" data-pdf="pdfs/edicion_04.pdf">
+            <img src="visualizaciones/portada_04.png" alt="Edición 4">
+        </div>
+
+        <div class="tarjeta-edicion" data-pdf="pdfs/edicion_05.pdf">
+            <img src="visualizaciones/portada_05.png" alt="Edición 5">
+        </div>
+
+        <div class="tarjeta-edicion" data-pdf="pdfs/edicion_06.pdf">
+            <img src="visualizaciones/portada_06.png" alt="Edición 6">
+        </div>
+
+        <div class="tarjeta-edicion" data-pdf="pdfs/edicion_07.pdf">
+            <img src="visualizaciones/portada_07.png" alt="Edición 7">
+        </div>
+
+        <div class="tarjeta-edicion" data-pdf="pdfs/edicion_08.pdf">
+            <img src="visualizaciones/portada_08.png" alt="Edición 8">
+        </div>
+
+        <div class="tarjeta-edicion" data-pdf="pdfs/edicion_09.pdf">
+            <img src="visualizaciones/portada_09.png" alt="Edición 9">
+        </div>
+
+        <div class="tarjeta-edicion" data-pdf="pdfs/edicion_10.pdf">
+            <img src="visualizaciones/portada_10.png" alt="Edición 10">
+        </div>
+
+        <div class="tarjeta-edicion" data-pdf="pdfs/edicion_11.pdf">
+            <img src="visualizaciones/portada_11.png" alt="Edición 11">
+        </div>
+
+        <div class="tarjeta-edicion" data-pdf="pdfs/edicion_12.pdf">
+            <img src="visualizaciones/portada_12.png" alt="Edición 12">
+        </div>
+
+        <div class="tarjeta-edicion" data-pdf="pdfs/edicion_13.pdf">
+            <img src="visualizaciones/portada_13.png" alt="Edición 13">
+        </div>
+
+        <div class="tarjeta-edicion" data-pdf="pdfs/edicion_14.pdf">
+            <img src="visualizaciones/portada_14.png" alt="Edición 14">
+        </div>
+
+        <div class="tarjeta-edicion" data-pdf="pdfs/edicion_15.pdf">
+            <img src="visualizaciones/portada_15.png" alt="Edición 15">
+        </div>
+
+        <div class="tarjeta-edicion" data-pdf="pdfs/edicion_16.pdf">
+            <img src="visualizaciones/portada_16.png" alt="Edición 16">
+        </div>
+
+        <div class="tarjeta-edicion" data-pdf="pdfs/edicion_17.pdf">
+            <img src="visualizaciones/portada_17.png" alt="Edición 17">
+        </div>
+
+        <div class="tarjeta-edicion" data-pdf="pdfs/edicion_18.pdf">
+            <img src="visualizaciones/portada_18.png" alt="Edición 18">
+        </div>
+
+        <div class="tarjeta-edicion" data-pdf="pdfs/edicion_19.pdf">
+            <img src="visualizaciones/portada_19.png" alt="Edición 19">
+        </div>
+    </div>
+
+</section>
+
+<!-- VENTANA FLOTANTE MODAL (Oculta por defecto, aparece al pinchar una portada) -->
+<div id="modal-visor" class="modal-oculto">
+    <div class="modal-contenido">
+        <span class="btn-cerrar">&times;</span>
+        <img id="modal-imagen" src="" alt="Portada Ampliada">
+        <a id="modal-link-pdf" href="#" target="_blank" class="boton">Leer Edición Completa (PDF)</a>
+    </div>
+</div>
 
 <!-- Busca esta sección en tu index.html y déjala así: -->
 <section class="visualizacion">
