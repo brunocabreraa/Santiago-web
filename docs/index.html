@@ -11,25 +11,30 @@
 
 <body>
 
-<header class="hero" id="inicio">
-    <nav class="menu">
-        <a href="#inicio">Inicio</a>
-        <a href="#cronica">Reportaje</a>
-        <a href="#metodologia">Metodología</a>
-    </nav>
+<header class="hero">
+    
+    <div class="hero-mapa-bg">
+        <img src="visualizaciones/mapa_base.jpeg" class="capa-mapa base" alt="Mapa de Santiago">
+        <div class="capa-vignette"></div>
+    </div>
 
     <div class="hero-contenido">
-        <p class="volanta">Periodismo de datos urbano</p>
+        <p class="volanta"></p>
         
-        <!-- Tu potente titular con el concepto visual del tachado -->
         <h1>Santiago en <span class="tachado">100 Palabras</span> <br><span class="enfasis-rojo">4 Comunas</span></h1>
         
         <p class="bajada">
-            El concurso literario más masivo de Chile esconde un patrón implacable de segregación. El mapa de los relatos premiados revela que el capital cultural y las condiciones materiales trazan una frontera invisible en la Región Metropolitana.
+            Los ganadores de Santiago en 100 Palabras han estado en ciertas comunas (con unas cuantas excepciones) de la RM a lo largo de las 21 ediciones existentes.
         </p>
+    </div> <!-- 🛠️ ¡ESTE ES EL CIERRE QUE FALTABA PARA SEPARAR EL TEXTO DE LA FLECHA! -->
         
-        <a href="#cronica" class="boton">Leer Crónica</a>
-    </div>
+    <a href="#cronica" class="flecha-bajar" aria-label="Scrollear hacia abajo">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Es una flecha gruesa y estilizada de color rojo -->
+            <path d="M12 5V19M12 19L5 12M12 19L19 12" stroke="#E60000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </a>
+
 </header>
 
 <main id="cronica">
@@ -56,7 +61,7 @@
     <!-- Columna Derecha: Grilla de las 19 portadas -->
     <div class="columna-grilla-portadas">
         <!-- Tarjeta Edición 1 (Repetir esta estructura cambiando los datos para las 19) -->
-        <div class="tarjeta-edicion" data-pdf="pdfs/edicion_01.pdf">
+        <div class="tarjeta-edicion" data-pdf="pdfs/edicion_01.pdf" data-info="En esta primera edición histórica hubo 100 cuentos seleccionados, de los cuales 50 pertenecieron a la Región Metropolitana, representando exactamente el 50% del total.">
             <img src="visualizaciones/portada_01.png" alt="Edición 1">
         </div>
         
@@ -139,8 +144,18 @@
 <div id="modal-visor" class="modal-oculto">
     <div class="modal-contenido">
         <span class="btn-cerrar">&times;</span>
-        <img id="modal-imagen" src="" alt="Portada Ampliada">
-        <a id="modal-link-pdf" href="#" target="_blank" class="boton">Leer Edición Completa (PDF)</a>
+        
+        <div class="modal-col-izquierda">
+            <img id="modal-imagen" src="" alt="Portada Ampliada">
+            <a id="modal-link-pdf" href="#" target="_blank" class="btn-pdf">Leer Edición Completa (PDF)</a>
+        </div>
+        
+        <div class="modal-col-derecha">
+            <h3>Radiografía de la Edición</h3>
+            <div class="cuadro-datos-edicion">
+                <p id="modal-texto-info">Cargando datos...</p>
+            </div>
+        </div>
     </div>
 </div>
 

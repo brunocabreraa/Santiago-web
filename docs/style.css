@@ -11,11 +11,11 @@
 
 /* Cuerpo de la página con el gris claro continuo solicitado */
 body {
-    background-color: #DBDBDB; /* El color exacto de la corrección */
-    color: #111111; /* Texto casi negro para asegurar un contraste alto */
-    font-family: 'Lora', Georgia, serif; /* Tipografía clásica de crónica de prensa */
+    background-color: #DBDBDB; 
+    color: #111111; 
+    font-family: 'Lora', Georgia, serif; 
     line-height: 1.7;
-    padding-top: 60px; /* Espacio para que el menú flotante no tape la portada */
+    /* ❌ Borramos el padding-top de aquí para que la portada llegue al tope */
 }
 
 /* Menú de navegación superior minimalista y oscuro */
@@ -77,18 +77,32 @@ body {
     /* Sacamos el mix-blend-mode para que el navegador no evapore los grises del mapa */
 }
 
-/* Ajustes específicos de la capa base (El mapa gris) */
+/* Ajustes específicos de la capa base (Tu mapa gris en movimiento) */
 .capa-mapa.base {
-    opacity: 0.35 !important; /* Le damos una opacidad fija para que se note en el fondo */
-    /* Le metemos un subidón artificial de brillo y contraste para rescatar los detalles del plano */
-    filter: grayscale(100%) brightness(140%) contrast(150%) !important; 
+    opacity: 0.35 !important;
+    filter: grayscale(100%) brightness(140%) contrast(150%) !important;
+    
+    /* 🎬 EL MOTOR DEL PANEO:
+       Le damos 25 segundos para que sea un movimiento casi imperceptible y elegante.
+       'alternate' hace que cuando llegue abajo, vuelva a subir suavemente. */
+    animation: paneoUrbano 30s infinite alternate ease-in-out;
 }
 
-/* 2. LA MAGIA: La línea roja que parpadea estilo "Sin City" */
-.capa-mapa.linea-animada {
-    opacity: 1 !important;
-    /* Llamamos a la animación 'pulsoFrontera', dura 4 segundos y es eterna */
-    animation: pulsoFrontera 4s infinite ease-in-out;
+/* ==========================================================================
+   MOTOR DE MOVIMIENTO: PANEO VERTICAL + EFECTO ZOOM
+   ========================================================================== */
+@keyframes paneoUrbano {
+    0% {
+        object-position: center 15%;  /* Comienza mostrando la zona norte/oriente */
+        transform: scale(1.1);        /* Un sutil zoom inicial */
+    }
+    50% {
+        transform: scale(1.75);         /* Al medio se acerca un pelito más para dar profundidad */
+    }
+    100% {
+        object-position: center 100%;  /* Termina mostrando el sector sur */
+        transform: scale(1.15);        /* Vuelve al zoom inicial */
+    }
 }
 
 /* El truco del contraste definitivo: Suavizamos la manta oscura */
@@ -108,25 +122,6 @@ body {
     max-width: 850px;
 }
 
-/* ==========================================================================
-   MOTOR DE ANIMACIÓN DE LA FRONTERA (CSS KEYFRAMES)
-   ========================================================================== */
-
-@keyframes pulsoFrontera {
-    0% {
-        opacity: 0.2;
-        filter: drop-shadow(0 0 2px rgba(230, 0, 0, 0.2));
-    }
-    50% {
-        opacity: 0.95;
-        /* Efecto de cicatriz de neón latiendo sobre las comunas del privilegio */
-        filter: drop-shadow(0 0 15px #E60000) brightness(1.2);
-    }
-    100% {
-        opacity: 0.2;
-        filter: drop-shadow(0 0 2px rgba(230, 0, 0, 0.2));
-    }
-}
 
 .volanta {
     font-family: 'Oswald', sans-serif;
@@ -166,21 +161,41 @@ h1 {
     color: #E60000;
 }
 
-.boton {
-    display: inline-block;
-    padding: 14px 35px;
-    background-color: #E60000;
-    color: #FFFFFF;
-    text-decoration: none;
-    font-family: 'Oswald', sans-serif;
-    text-transform: uppercase;
-    font-weight: bold;
-    letter-spacing: 1px;
-    transition: background 0.3s;
+.flecha-bajar {
+    position: absolute; /* 🛠️ La desanclamos del texto para moverla libremente */
+    bottom: 30px;       /* 📍 La clava a 30 píxeles del borde inferior */
+    left: 50%;          /* 📐 La centra exactamente a la mitad horizontal */
+    
+    width: 45px;      
+    height: 45px;
+    cursor: pointer;
+    z-index: 4;         /* Rompe el frente para quedar por sobre la vignette */
+    
+    /* Conectamos la animación */
+    animation: flechaFlotante 2s infinite ease-in-out;
+    transition: filter 0.3s ease;
 }
 
-.boton:hover {
-    background-color: #B30000;
+/* Efecto al pasar el mouse por encima */
+.flecha-bajar:hover {
+    filter: drop-shadow(0 0 8px #E60000) brightness(1.2);
+}
+
+/* ==========================================================================
+   MOTOR DE ANIMACIÓN CORREGIDO: MANTIENE EL CENTRADO Y FLOTA
+   ========================================================================== */
+@keyframes flechaFlotante {
+    0% {
+        /* ⚠️ NOTA CRUCIAL: El -50% mantiene la flecha centrada en el eje X, 
+           mientras que el segundo valor hace el rebote en el eje Y */
+        transform: translate(-50%, 0);
+    }
+    50% {
+        transform: translate(-50%, 12px); /* Baja 12px sin perder su centro */
+    }
+    100% {
+        transform: translate(-50%, 0);
+    }
 }
 
 /* Secciones de la Crónica */
@@ -505,4 +520,120 @@ footer p {
     .presentacion-ediciones { grid-template-columns: 1fr; gap: 40px; }
     .presentacion-ediciones::after { display: none; } /* Vuela la línea si es vertical */
     .columna-grilla-portadas { grid-template-columns: repeat(3, 1fr); } /* 3 columnas en celulares */
+}
+/* ==========================================================================
+   BOTÓN EXCLUSIVO PARA DESCARGA DE PDF
+   ========================================================================== */
+.btn-pdf {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;                   /* Separa el emoticón/icono del texto */
+    background-color: #E60000;  /* El rojo del proyecto */
+    color: #ffffff !important;  /* Fuerza el texto blanco */
+    padding: 12px 24px;
+    font-weight: 600;
+    text-decoration: none;      /* Quita el subrayado feo */
+    border-radius: 6px;         /* Bordes ligeramente redondeados */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    transition: all 0.2s ease;
+}
+
+/* Efecto cuando pasas el mouse por encima */
+.btn-pdf:hover {
+    background-color: #b30000;  /* Un rojo más oscuro al hacer hover */
+    transform: translateY(-2px); /* Se levanta un poquito */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* Efecto cuando lo clickeas */
+.btn-pdf:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 3px rgba(0,0,0,0.15);
+}
+/* Ajustamos la caja del modal para usar Flexbox lado a lado */
+.modal-contenido {
+    position: relative;
+    background-color: #ffffff;
+    margin: 5% auto;
+    padding: 30px;
+    width: 85%;
+    max-width: 850px; /* Un poco más ancho para que quepan las dos columnas */
+    border-radius: 8px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.5);
+    
+    /* 🚀 Activamos las columnas */
+    display: flex;
+    flex-direction: row;
+    gap: 30px; /* Separación entre la foto y el texto */
+}
+
+/* Columna izquierda (Imagen + Botón) */
+.modal-col-izquierda {
+    flex: 1; /* Toma la mitad del espacio */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+#modal-imagen {
+    max-width: 100%;
+    max-height: 400px;
+    object-fit: contain;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+/* Columna derecha (Caja de Texto Noir) */
+.modal-col-derecha {
+    flex: 1; /* Toma la otra mitad del espacio */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra el texto verticalmente */
+    text-align: left;
+}
+
+.modal-col-derecha h3 {
+    font-family: 'Oswald', sans-serif;
+    color: #111111;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 2px solid #E60000; /* Línea roja divisoria */
+    padding-bottom: 5px;
+}
+
+.cuadro-datos-edicion {
+    background-color: #f4f4f4; /* Fondo gris suave para resaltar el dato */
+    padding: 20px;
+    border-left: 4px solid #E60000; /* Borde rojo estilo blockquote */
+    border-radius: 0 4px 4px 0;
+}
+
+#modal-texto-info {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: #333333;
+    margin: 0;
+}
+
+/* Asegurar que el botón de cerrar no se mueva de su esquina */
+.btn-cerrar {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 28px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+/* RESPONSIVE: Si el lector entra desde un celular, las columnas se apilan una arriba de otra */
+@media (max-width: 768px) {
+    .modal-contenido {
+        flex-direction: column;
+        margin: 10% auto;
+        width: 90%;
+        padding: 20px;
+    }
 }
