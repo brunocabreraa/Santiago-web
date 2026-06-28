@@ -49,18 +49,83 @@ body {
 
 /* Sección de Portada (Hero) - Impacto Negro Inicial */
 .hero {
-    height: 90vh;
+    height: 100vh; /* Ocupa el 100% de la pantalla del usuario */
+    position: relative; /* Obligatorio para que las capas de fondo no se escapen */
+    overflow: hidden; /* Corta cualquier pedazo de mapa que intente salirse */
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     padding: 0 20px;
-    background-color: #111111; /* Contraste total: portada negra antes de pasar al fondo gris */
-    color: #DBDBDB;
+    background-color: #0A0A0A; /* Fondo negro profundo de respaldo */
 }
 
+/* 1. El búnker del mapa de fondo */
+.hero-mapa-bg {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 1; /* Queda en el nivel más bajo */
+}
+
+/* Estilo general para las dos imágenes superpuestas */
+.capa-mapa {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    object-fit: cover; /* Mantiene la proporción del plano sin deformarlo */
+    /* Sacamos el mix-blend-mode para que el navegador no evapore los grises del mapa */
+}
+
+/* Ajustes específicos de la capa base (El mapa gris) */
+.capa-mapa.base {
+    opacity: 0.35 !important; /* Le damos una opacidad fija para que se note en el fondo */
+    /* Le metemos un subidón artificial de brillo y contraste para rescatar los detalles del plano */
+    filter: grayscale(100%) brightness(140%) contrast(150%) !important; 
+}
+
+/* 2. LA MAGIA: La línea roja que parpadea estilo "Sin City" */
+.capa-mapa.linea-animada {
+    opacity: 1 !important;
+    /* Llamamos a la animación 'pulsoFrontera', dura 4 segundos y es eterna */
+    animation: pulsoFrontera 4s infinite ease-in-out;
+}
+
+/* El truco del contraste definitivo: Suavizamos la manta oscura */
+.capa-vignette {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    /* Ahora va desde transparente al medio (0) hasta un negro sutil en los bordes (0.75) */
+    background: radial-gradient(circle, rgba(0,0,0,0) 30%, rgba(10,10,10,0.75) 90%);
+    z-index: 2;
+}
+
+/* 3. El contenedor del texto (Adelante de todo) */
 .hero-contenido {
+    position: relative;
+    z-index: 3; /* Salta al frente por sobre el mapa y la vignette */
     max-width: 850px;
+}
+
+/* ==========================================================================
+   MOTOR DE ANIMACIÓN DE LA FRONTERA (CSS KEYFRAMES)
+   ========================================================================== */
+
+@keyframes pulsoFrontera {
+    0% {
+        opacity: 0.2;
+        filter: drop-shadow(0 0 2px rgba(230, 0, 0, 0.2));
+    }
+    50% {
+        opacity: 0.95;
+        /* Efecto de cicatriz de neón latiendo sobre las comunas del privilegio */
+        filter: drop-shadow(0 0 15px #E60000) brightness(1.2);
+    }
+    100% {
+        opacity: 0.2;
+        filter: drop-shadow(0 0 2px rgba(230, 0, 0, 0.2));
+    }
 }
 
 .volanta {
