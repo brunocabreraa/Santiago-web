@@ -12,7 +12,7 @@
 /* Cuerpo de la página con el gris claro continuo solicitado */
 body {
     background-color: #DBDBDB; 
-    color: #111111; 
+    color: #ffffff; 
     font-family: 'Lora', Georgia, serif; 
     line-height: 1.7;
     /* ❌ Borramos el padding-top de aquí para que la portada llegue al tope */
